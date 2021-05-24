@@ -1,12 +1,10 @@
-
-ansible@instance-4:~/ansible$ cat file_creating/tasks/main.yml
+ansible@instance-4:~/ansible$ cat version_reading/tasks/main.yml
 ---
-  - name: file /etc/iaac with rights 0500
-    copy:
-      content: ""
-      dest: /etc/iaac
-      force: no
-      group: sys
-      owner: root
-      mode: 0500
-ansible@instance-4:~/ansible$
+# task file for version_reading
+  - name: fetch name/version
+    shell: cat /etc/os-release
+    register: response
+
+  - name: print name/version
+    debug:
+      var: response.stdout_lines
