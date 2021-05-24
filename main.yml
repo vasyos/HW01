@@ -1,0 +1,12 @@
+
+ansible@instance-4:~/ansible$ cat file_creating/tasks/main.yml
+---
+  - name: file /etc/iaac with rights 0500
+    copy:
+      content: ""
+      dest: /etc/iaac
+      force: no
+      group: sys
+      owner: root
+      mode: 0500
+ansible@instance-4:~/ansible$
